@@ -43,7 +43,7 @@ public class BallDemo
             int g = aleatorio.nextInt(256);
             int b = aleatorio.nextInt(256);
             Color colorAleatorio = new Color(r,g,b);
-            BouncingBall ball = new BouncingBall(aleatorio.nextInt(100), aleatorio.nextInt(100), aleatorio.nextInt(100),colorAleatorio,ground, myCanvas);
+            BouncingBall ball = new BouncingBall(aleatorio.nextInt(50), aleatorio.nextInt(100), aleatorio.nextInt(100),colorAleatorio,ground, myCanvas);
             listaBolas.add(ball);
             ball.draw();
         }
