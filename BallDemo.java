@@ -36,18 +36,16 @@ public class BallDemo
 
         // draw the ground
         myCanvas.drawLine(50, ground, 550, ground);
-        int posX = 40;
-        int posY = 40;
-        int radio = 15;
 
         for(int i =0;i<bolas;i++)
         {
-            BouncingBall ball = new BouncingBall(15, posX,posY,Color.BLUE,ground, myCanvas);
+            int r = aleatorio.nextInt(256);
+            int g = aleatorio.nextInt(256);
+            int b = aleatorio.nextInt(256);
+            Color colorAleatorio = new Color(r,g,b);
+            BouncingBall ball = new BouncingBall(aleatorio.nextInt(100), aleatorio.nextInt(100), aleatorio.nextInt(100),colorAleatorio,ground, myCanvas);
             listaBolas.add(ball);
             ball.draw();
-            posX=posX+10;
-            posY= posY+10;
-            radio = radio+10;
         }
 
         // make them bounce
