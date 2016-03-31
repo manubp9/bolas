@@ -1,6 +1,7 @@
 import java.awt.Color;
 import java.util.Random;
 import java.util.ArrayList;
+
 /**
  * Class BallDemo - a short demonstration showing animation with the 
  * Canvas class. 
@@ -14,6 +15,8 @@ public class BallDemo
     private Canvas myCanvas;
     private Random aleatorio;//
     private ArrayList<BouncingBall> listaBolas; 
+    private ArrayList<BoxBall> boxLista;
+    
 
     /**
      * Create a BallDemo object. Creates a fresh canvas and makes it visible.
@@ -23,6 +26,7 @@ public class BallDemo
         myCanvas = new Canvas("Ball Demo", 600, 500);
         aleatorio = new Random();
         listaBolas = new ArrayList<>();
+        boxLista = new ArrayList<>();
     }
 
     /**
@@ -73,5 +77,45 @@ public class BallDemo
     public void boxBounce(int bolas)
     {
         
+        int ground = 400;   // position of the ground line
+
+        myCanvas.setVisible(true);
+
+        // draw the ground
+        myCanvas.drawLine(50, ground, 550, ground);
+        myCanvas.drawLine(50, ground, 50, 100);
+        myCanvas.drawLine(550, ground, 550, 100);
+        myCanvas.drawLine(50, 100, 550, 100);
+        
+
+        for(int i =0;i<bolas;i++)
+        {
+            int r = aleatorio.nextInt(256);
+            int g = aleatorio.nextInt(256);
+            int b = aleatorio.nextInt(256);
+            Color colorAleatorio = new Color(r,g,b);
+            //las bolas se crean en un espacio maximo de 50
+            BoxBall ball = new BoxBall(aleatorio.nextInt(50), aleatorio.nextInt(100), aleatorio.nextInt(100),colorAleatorio,ground, myCanvas);
+            boxLista.add(ball);
+            ball.draw();
+        }
+
+        // make them bounce
+        // make them bounce
+        boolean finished =  false;
+        while(!finished) {
+            myCanvas.wait(2);
+
+            for(int i = 0 ;i<boxLista.size();i++)
+            {   
+                boxLista.get(i).move();
+                if(boxLista.get(i).getXPosition() >= 550) ///la animacion termina
+                {
+                    finished = true;
+                }
+            }
+        }
+        
     }
+    
 }
