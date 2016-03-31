@@ -18,7 +18,7 @@ import java.awt.geom.*;
 
 public class BoxBall
 {
-    private static final int GRAVITY = 3;  // effect of gravity
+    private static final int GRAVITY = 0;  // effect of gravity
 
     private int ballDegradation = 2;
     private Ellipse2D.Double circle;
