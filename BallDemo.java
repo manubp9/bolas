@@ -15,7 +15,7 @@ public class BallDemo
     private Canvas myCanvas;
     private Random aleatorio;//
     private ArrayList<BouncingBall> listaBolas; 
-    private ArrayList<BoxBall> boxLista;
+    private ArrayList<BoxBall> boxLista;//nueva lista de box ball
     
 
     /**
