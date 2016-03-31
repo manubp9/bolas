@@ -29,6 +29,8 @@ public class BoxBall
     private final int groundPosition;      // y position of ground
     private Canvas canvas;
     private int ySpeed = 1;                // initial downward speed
+    private boolean derecha ;// atributo que le dice a la bola la direccion horizontal
+    private boolean abajo;//// atributo que le dice a la bola la direccion vertical
 
     /**
      * Constructor for objects of class BouncingBall
@@ -41,7 +43,7 @@ public class BoxBall
      * @param drawingCanvas  the canvas to draw this ball on
      */
     public BoxBall(int xPos, int yPos, int ballDiameter, Color ballColor,
-                        int groundPos, Canvas drawingCanvas)
+                        int groundPos, Canvas drawingCanvas,boolean horizontal,boolean vertical)
     {
         xPosition = xPos;
         yPosition = yPos;
@@ -49,6 +51,8 @@ public class BoxBall
         diameter = ballDiameter;
         groundPosition = groundPos;
         canvas = drawingCanvas;
+        derecha = horizontal;
+        abajo = vertical;
     }
 
     /**
@@ -76,17 +80,32 @@ public class BoxBall
         // remove from canvas at the current position
         erase();
             
-        // compute new position
-        ySpeed += GRAVITY;
-        yPosition += ySpeed;
-        xPosition +=2;
-
-        // check if it has hit the ground
-        if(yPosition >= (groundPosition - diameter) && ySpeed > 0) {
-            yPosition = (int)(groundPosition - diameter);
-            ySpeed = -ySpeed + ballDegradation; 
+        if (abajo )
+        
+        {
+            yPosition++;
         }
-
+        else
+        {
+            yPosition--;
+        }
+        if (derecha)
+        {
+            xPosition++;
+        }
+        else
+        {
+            xPosition--;
+        }
+        if(yPosition >= 400-diameter|| yPosition <= 100) 
+        {
+          abajo = !abajo;
+            
+        }
+        if(xPosition <=51 || xPosition >= 550-diameter)
+        {
+            derecha = !derecha;
+        }
         // draw again at new position
         draw();
     }    
