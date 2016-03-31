@@ -95,7 +95,9 @@ public class BallDemo
             int b = aleatorio.nextInt(256);
             Color colorAleatorio = new Color(r,g,b);
             //las bolas se crean en un espacio maximo de 50
-            BoxBall ball = new BoxBall(aleatorio.nextInt(50), aleatorio.nextInt(100), aleatorio.nextInt(100),colorAleatorio,ground, myCanvas);
+            BoxBall ball = new BoxBall(aleatorio.nextInt(150)+60, 
+            aleatorio.nextInt(200)+110, aleatorio.nextInt(80),colorAleatorio,ground, myCanvas, 
+            aleatorio.nextBoolean(),aleatorio.nextBoolean());
             boxLista.add(ball);
             ball.draw();
         }
@@ -104,18 +106,19 @@ public class BallDemo
         // make them bounce
         boolean finished =  false;
         while(!finished) {
-            myCanvas.wait(2);
+            myCanvas.wait(20);
 
             for(int i = 0 ;i<boxLista.size();i++)
             {   
                 boxLista.get(i).move();
                 if(boxLista.get(i).getXPosition() >= 550) ///la animacion termina
                 {
-                    finished = true;
+                    finished = false;//cambiada la animacion a false
                 }
             }
         }
         
     }
+    }
     
-}
+
