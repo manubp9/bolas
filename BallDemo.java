@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class BallDemo   
 {
     private Canvas myCanvas;
-    private Random aleatorio;
+    private Random aleatorio;//
     private ArrayList<BouncingBall> listaBolas; 
 
     /**
@@ -53,7 +53,7 @@ public class BallDemo
         // make them bounce
         boolean finished =  false;
         while(!finished) {
-            myCanvas.wait(50);
+            myCanvas.wait(2);
 
             for(int i = 0 ;i< listaBolas.size();i++)
             {   
@@ -65,5 +65,13 @@ public class BallDemo
             }
         }
 
+    }
+    /**
+     * Cuando se invoque debe dibujar un rectángulo sin relleno en la pantalla 
+     * y tantas bolas como se indiquen como parámetro en la invocación del método dentro de dicho rectángulo.
+     */
+    public void boxBounce(int bolas)
+    {
+        
     }
 }
